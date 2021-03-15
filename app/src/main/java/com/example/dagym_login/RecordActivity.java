@@ -50,11 +50,11 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
         tran = fm.beginTransaction();
         switch (n){
             case 0:
-                tran.replace(R.id.main_frame, frag1);  //replace의 매개 변수: (프래그먼트를 담을 영역 id, 프래그먼트 객체)
+                tran.replace(R.id.main_frame, frag1);  // replace의 매개 변수: (프래그먼트를 담을 영역 id, 프래그먼트 객체)
                 tran.commit();
                 break;
             case 1:
-                tran.replace(R.id.main_frame, frag2);  //replace의 매개 변수: (프래그먼트를 담을 영역 id, 프래그먼트 객체)
+                tran.replace(R.id.main_frame, frag2);  // replace의 매개 변수: (프래그먼트를 담을 영역 id, 프래그먼트 객체)
                 tran.commit();
                 break;
         }
