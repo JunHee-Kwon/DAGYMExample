@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DAGYM_login">
         <activity
+            android:name=".RecordActivity"
+            android:label="DAGYM" />
+        <activity
             android:name=".Main2Activity"
             android:label="DAGYM" />
         <activity android:name=".LoginActivity" />

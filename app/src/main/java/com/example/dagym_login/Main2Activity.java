@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.EventLogTags;
@@ -41,6 +42,8 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 Toast.makeText(Main2Activity.this, "" + year + "/" + (month + 1) + "/" + dayOfMonth, 0).show();
+                Intent intent = new Intent(getApplicationContext(), RecordActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -74,9 +77,9 @@ public class Main2Activity extends AppCompatActivity {
         pieToChart.invalidate();
 
         Description description2 = new Description();
-        description.setText("하루 섭취량");
-        description.setTextSize(12);
-        pieToChart.setDescription(description);
+        description2.setText("하루 섭취량");
+        description2.setTextSize(12);
+        pieToChart.setDescription(description2);
 
     }
 
