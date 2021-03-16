@@ -7,55 +7,52 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 
 public class RecordActivity extends AppCompatActivity implements View.OnClickListener{
-    Button bt1, bt2;
-    FragmentManager fm;
-    FragmentTransaction tran;
-    Fragment frag1;
-    Fragment frag2;
+    FragmentManager manager;
+    FragmentTransaction ft;
+
+    ExFragment frag1;
+    KcalFragment frag2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
 
-        bt1 = (Button) findViewById(R.id.bt1);
-        bt2 = (Button) findViewById(R.id.bt2);
+        manager = getSupportFragmentManager();
 
-        bt1.setOnClickListener(this);
-        bt2.setOnClickListener(this);
+        Button b1 = findViewById(R.id.bt1);
+        Button b2 = findViewById(R.id.bt2);
 
-        frag1 = new Fragment(); // 프래그먼트 객체 생성
-        frag2 = new Fragment(); // 프래그먼트 객체 생성
-        setFrag(0); // 프래그먼트 교체
+        frag1 = new ExFragment();
+        frag2 = new KcalFragment();
+
+        ft = manager.beginTransaction();
+        ft.add(R.id.main_frame, frag1);
+        ft.addToBackStack(null);
+        ft.commit();
+
+        b1.setOnClickListener(this);
+        b2.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View v){
-        switch (v.getId()){
+    public void onClick(View v) {
+        ft = manager.beginTransaction();
+
+        int id = v.getId();
+        switch (id) {
             case R.id.bt1:
-                setFrag(0);
+                ft.replace(R.id.main_frame, frag1);
+                ft.commit();
                 break;
             case R.id.bt2:
-                setFrag(1);
-                break;
-        }
-    }
-    public void setFrag(int n){    // 프래그먼트를 교체하는 작업을 하는 메소드 생성
-        fm = getFragmentManager();
-        tran = fm.beginTransaction();
-        switch (n){
-            case 0:
-                tran.replace(R.id.main_frame, frag1);  // replace의 매개 변수: (프래그먼트를 담을 영역 id, 프래그먼트 객체)
-                tran.commit();
-                break;
-            case 1:
-                tran.replace(R.id.main_frame, frag2);  // replace의 매개 변수: (프래그먼트를 담을 영역 id, 프래그먼트 객체)
-                tran.commit();
+                ft.replace(R.id.main_frame, frag2);
+                ft.commit();
                 break;
         }
     }
