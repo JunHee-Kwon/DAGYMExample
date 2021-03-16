@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.EventLogTags;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
@@ -80,6 +81,24 @@ public class Main2Activity extends AppCompatActivity {
         description2.setText("하루 섭취량");
         description2.setTextSize(12);
         pieToChart.setDescription(description2);
+
+        Button bt1 = (Button) findViewById(R.id.routine_btn);
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RoutineActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button bt2 = (Button) findViewById(R.id.routine2_btn);
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RoutineActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
